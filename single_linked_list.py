@@ -51,6 +51,25 @@ class LinkedList(object):
         # unlink the node from linked list
         prev.nextNode = temp.nextNode
     
+    def searchNode(self, data):
+        temp = self.head
+        
+        # if head is the key to be deleted
+        if temp is not None:
+            if temp.data == data:
+                print ('Found %s' %data)
+                return
+        
+        # search for the key, keep track of prev node, as we need to change prev.next
+        while temp is not None:
+            if temp.data == data:
+                print ('Found %s' %data)
+                break
+            prev = temp
+            temp = temp.nextNode
+        else:
+            print ('%s not found!' %data)
+    
     def printNode(self):
         curr = self.head
         while curr:
@@ -67,11 +86,17 @@ print ('First item: ', myList.addNode(5))
 print ('Second item: ', myList.addNode(10))
 print ('Third item: ', myList.addNode(15))
 
+print ('\nSize of linked list..')
+print (myList.getSize())
+
 print ('\nPrinting items in linked list before deletion..')
 myList.printNode()
 
 print ('\nDeleting items from linked lists..')
 myList.delNode(10)
+
+print ('\nSearching items in linked lists..')
+myList.searchNode(25)
 
 print ('\nPrinting items in linked list after deletion..')
 myList.printNode()
